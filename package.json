@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-util": "latest",
+    "gulp-sass": "latest",
+    "gulp-connect": "latest"
+  },
+  "dependencies": {
+    "angular": "^1.6.6",
+    "hover.css": "^2.2.0"
+  }
+}
