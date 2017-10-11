@@ -3,38 +3,148 @@
 <head>
 
   <meta charset="utf-8">
-  <title>Getting Started With Gup</title>
+  <title>Stratus</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet"></head>
 
-</head>
+<body ng-controller='myController'>
 
-<body>
+ 
 
-
-<!-- <script src="http://maps.google.com/maps/api/js?key=AIzaSyD3LCWRWKfgyuVh3GIQ5oGb4a-nDnN0zn4"></script> -->
-    
-<div ng-view>
-  
-     <div ng-controller="testCtrl">
-         <h1>{{hello}}</h1>
-   
       
-   </div>
+      <div class="title">Stratus</div>
+      
+      <div class="location-input">
+          <div id="locationField">
+            <input id="autocomplete" placeholder="Please enter your address" type="text">
+          </div>
+          <table id="address">
+            <tr>
+              <td class="label">Street address</td>
+              <td class="slimField">
+                <input ng-model="formData.street_number" class="field" id="street_number" disabled="true" type="text">
+              </td>
+              <td class="wideField" colspan="2">
+                <input ng-model="formData.route" class="field" id="route" disabled="true">
+              </td>
+            </tr>
+            <tr>
+              <td class="label">City</td>
+              <td class="wideField" colspan="3">
+                <input ng-model="formData.locality" class="field" id="locality" disabled="true">
+              </td>
+            </tr>
+            <tr>
+              <td class="label">State</td>
+              <td class="slimField">
+                <input ng-model="formData.administrative_area_level_1" class="field" id="administrative_area_level_1" disabled="true">
+              </td>
+              <td class="label">Zip code</td>
+              <td class="wideField">
+                <input ng-model="formData.postal_code" class="field" id="postal_code" disabled="true">
+              </td>
+            </tr>
+            <tr>
+              <td class="label">Country</td>
+              <td class="wideField" colspan="3">
+                <input ng-model="formData.country" class="field" id="country" disabled="true">
+              </td>
+            </tr>
+          </table>
+          <pre>{{ formData | json }}</pre>
+          <pre>{{ ll | json }}</pre>
+        </div>
 
-</div>
+<!-- 
+      <div class="current-weather-container"> 
+        <button class="current-button">Click here to view the current weather!</button>
+      </div> -->
+      
+      <div  class="weather-container">
+          <h1 ng-hide="currenttemp" class="instructions">Please Enter Your Location</h1>
+          
+        <div ng-show="currenttemp" class="current-weather">
+          <h1>Right Now</h1>
+            <img ng-src="{{currentsky[0].image}}">            
+            <!-- <div class="current-sky">{{currentsky}}</div>    -->
+            <div class="current-location">{{currentlocation}}</div>                        
+            <div class="current-temp">{{currenttemp}}</div>
+        </div>
+        <div ng-show="currenttemp" class="weekly-weather">
+        <div class="box">
+            <div class="weekly-weather-box">
+              <div class="day">{{day1}}</div>
+              <img ng-src="{{weatherOne[0].image}}">
+              <!-- <img class="weather-pic" ng-src="{{weather1()}}"/> -->
+              <!-- <img src='/assets/weather-animations/cloudy-day-1.svg'/> -->
+              <!-- <div class="weather-pic">{{weather1()}}</div> -->
+              <div class="hilo">{{high1}} {{low1}}</div>
+            </div>
+            <div class="weekly-weather-box">
+              <div class="day">{{day2}}</div>
+              <img ng-src="{{weatherTwo[0].image}}">
+              <div class="hilo">{{high2}} {{low2}}</div>
+            </div>
+            <div class="weekly-weather-box">
+              <div class="day">{{day3}}</div>
+              <img ng-src="{{weatherThree[0].image}}">
+              <div class="hilo">{{high3}} {{low3}}</div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="weekly-weather-box">
+                <div class="day">{{day4}}</div>
+                <img ng-src="{{weatherFour[0].image}}">
+                <div class="hilo">{{high4}} {{low4}}</div>
+            </div>
+            <div class="weekly-weather-box">
+                <div class="day">{{day5}}</div>
+                <img ng-src="{{weatherFive[0].image}}">
+                <div class="hilo">{{high5}} {{low5}}</div>
+            </div>
+            <div class="weekly-weather-box">
+                <div class="day">{{day6}}</div>
+                <img ng-src="{{weatherSix[0].image}}">
+                <div class="hilo">{{high6}} {{low6}}</div>
+            </div>
+          </div>
+          <!-- <div class="weekly-weather-box">
+              <div class="day"></div>
+              <div class="weather-pic"></div>
+              <div class="hilo"></div>
+          </div> -->
+          
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
 
 
 
 </body>
 
-  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiU7Dz16GJrBgx9Va9G37Azpx6rlO4Ykg
-&libraries=places,geometry"></script>-->
-  <script src="/node_modules/angular/angular.js"></script>
+
+  <!-- <script src="/node_modules/angular/angular.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiU7Dz16GJrBgx9Va9G37Azpx6rlO4Ykg
+&libraries=places,geometry"></script>
   <script type='text/javascript' src='scripts/config.js'></script>  
-  <script src="scripts/main.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.1.js"></script>
+  <!-- <script type="text/javascript" src="/node_modules/moment/min/moment.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <!-- <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> -->
+  <script src="scripts/angular-google-maps-geocoder.js"></script> 
+   <script src="scripts/main.js"></script>
 </html>
