@@ -17,3 +17,9 @@ Things Used
 </ul>
 
 The site - http://splendid-basin.surge.sh
+
+![alt text](stratus.PNG)
+
+
+
+
